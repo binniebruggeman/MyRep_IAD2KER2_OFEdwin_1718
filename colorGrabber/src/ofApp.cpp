@@ -29,8 +29,8 @@ void ofApp::update(){
         
         for (int i=0; i< GRABBER_WIDTH*GRABBER_HEIGHT; i++){
             if (ofInRange(hue.getPixels()[i],
-                          findHue - HUE_MARGIN,
-                          findHue + HUE_MARGIN)) {
+                      findHue - HUE_MARGIN,
+                      findHue + HUE_MARGIN)) {
                 filtered.getPixels()[i] = 255;
             } else{
                 filtered.getPixels()[i] = 0;
@@ -82,6 +82,6 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     findHue = hue.getPixels()[y * GRABBER_WIDTH + x];
-    
+
 }
 

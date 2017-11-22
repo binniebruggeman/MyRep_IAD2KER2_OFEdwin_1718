@@ -14,6 +14,8 @@ void ofApp::setup(){
     value.allocate(GRABBER_WIDTH, GRABBER_HEIGHT);
     
     filtered.allocate(GRABBER_WIDTH, GRABBER_HEIGHT);
+    filtered_2.allocate(GRABBER_WIDTH, GRABBER_HEIGHT);
+
 }
 
 
@@ -59,13 +61,13 @@ void ofApp::update(){
             if (ofInRange(hue.getPixels()[i],
                           findHue_2 - HUE_MARGIN,
                           findHue_2 + HUE_MARGIN)) {
-                filtered.getPixels()[i] = 255;
+                filtered_2.getPixels()[i] = 255;
             } else{
-                filtered.getPixels()[i] = 0;
+                filtered_2.getPixels()[i] = 0;
             }
         }
         
-        filtered.flagImageChanged(); //
+        filtered_2.flagImageChanged(); //
         
         contours_2.findContours(filtered, MIN_SIZE,
                               GRABBER_WIDTH*GRABBER_HEIGHT/2,
@@ -92,9 +94,13 @@ void ofApp::draw(){
         if (showContours){
             contours.draw(0, 480);
         }
-        if (showContours_2){
-            contours_2.draw(0, 480);
-        }
+    }
+    
+    if (showFiltered_2){
+        filtered_2.draw(320, 480);
+    if (showContours_2){
+        contours_2.draw(320, 480);
+    }
     }
 }
 
@@ -110,6 +116,8 @@ void ofApp::keyPressed(int key){
         showContours_2 = !showContours_2;
     } else if (key == 'f') {
         showFiltered = !showFiltered;
+    } else if (key == 's') {
+        showFiltered_2 = !showFiltered_2;
     }
 }
 //--------------------------------------------------------------

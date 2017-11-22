@@ -30,6 +30,8 @@ public:
     ofxCvGrayscaleImage value; //==brightness
     
     ofxCvGrayscaleImage filtered;
+    ofxCvGrayscaleImage filtered_2;
+
     
     ofxCvContourFinder contours;
     ofxCvContourFinder contours_2;
@@ -37,6 +39,7 @@ public:
     bool showHSVComponents = false;
     bool showVideo = true;
     bool showFiltered = true;
+    bool showFiltered_2 = true;
     bool showContours = true;
     bool showContours_2 = true;
     

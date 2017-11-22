@@ -20,6 +20,7 @@ public:
     void mousePressed(int x, int y, int button);
     
     ofVideoGrabber grabber;
+    ofVideoGrabber grabber_2;
     
     ofxCvColorImage rgbImage;
     ofxCvColorImage hsvImage;
@@ -31,11 +32,14 @@ public:
     ofxCvGrayscaleImage filtered;
     
     ofxCvContourFinder contours;
+    ofxCvContourFinder contours_2;
     
     bool showHSVComponents = false;
     bool showVideo = true;
     bool showFiltered = true;
     bool showContours = true;
+    bool showContours_2 = true;
     
     int findHue;
+    int findHue_2;
 };

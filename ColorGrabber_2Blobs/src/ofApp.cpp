@@ -32,6 +32,7 @@ void ofApp::update(){
         hsvImage.convertToGrayscalePlanarImages(hue, saturation, value);
         
         for (int i=0; i< GRABBER_WIDTH*GRABBER_HEIGHT; i++){
+            if (firstMouse == true){
             if (ofInRange(hue.getPixels()[i],
                           findHue - HUE_MARGIN,
                           findHue + HUE_MARGIN)) {
@@ -46,7 +47,7 @@ void ofApp::update(){
         contours.findContours(filtered, MIN_SIZE,
                               GRABBER_WIDTH*GRABBER_HEIGHT/2,
                               1, false);
-        
+    }
     }
     
     if (grabber_2.isFrameNew()){
@@ -58,6 +59,7 @@ void ofApp::update(){
         hsvImage.convertToGrayscalePlanarImages(hue, saturation, value);
         
         for (int i=0; i< GRABBER_WIDTH*GRABBER_HEIGHT; i++){
+            if (secondMouse == true){
             if (ofInRange(hue.getPixels()[i],
                           findHue_2 - HUE_MARGIN,
                           findHue_2 + HUE_MARGIN)) {
@@ -73,6 +75,7 @@ void ofApp::update(){
                               GRABBER_WIDTH*GRABBER_HEIGHT/2,
                               1, false);
         
+    }
     }
 }
 
@@ -122,8 +125,17 @@ void ofApp::keyPressed(int key){
 }
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    findHue = hue.getPixels()[y * GRABBER_WIDTH + x];
-    findHue_2 = hue.getPixels()[y * GRABBER_WIDTH + x];
     
+    if (firstMouse == true){
+    findHue = hue.getPixels()[y * GRABBER_WIDTH + x];
+        firstMouse = false;
+        secondMouse = true;
+    }
+    
+    if (secondMouse == true) {
+    findHue_2 = hue.getPixels()[y * GRABBER_WIDTH + x];
+        secondMouse = false;
+        firstMouse = true;
+    }
 }
 

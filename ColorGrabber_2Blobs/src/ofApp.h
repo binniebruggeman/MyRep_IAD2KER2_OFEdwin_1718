@@ -43,6 +43,9 @@ public:
     bool showContours = true;
     bool showContours_2 = true;
     
+    bool firstMouse = true;
+    bool secondMouse = false;
+    
     int findHue;
     int findHue_2;
 };
